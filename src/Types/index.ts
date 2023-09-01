@@ -19,5 +19,5 @@ export type MovieType = {
   imdbID: string;
   Type: string;
   Response: string;
-  Images: string;
+  Images: string[];
 };

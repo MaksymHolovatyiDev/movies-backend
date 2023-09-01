@@ -4,6 +4,7 @@ import {
   GraphQLSchema,
   GraphQLInt,
   GraphQLList,
+  GraphQLFloat,
 } from 'graphql';
 
 const Movie = new GraphQLObjectType({
@@ -24,12 +25,12 @@ const Movie = new GraphQLObjectType({
     Awards: {type: GraphQLString},
     Poster: {type: GraphQLString},
     Metascore: {type: GraphQLInt},
-    imdbRating: {type: GraphQLInt},
+    imdbRating: {type: GraphQLFloat},
     imdbVotes: {type: GraphQLString},
     imdbID: {type: GraphQLString},
     Type: {type: GraphQLString},
     Response: {type: GraphQLString},
-    Images: {type: GraphQLString},
+    Images: {type: new GraphQLList(GraphQLString)},
   }),
 });
 
@@ -39,17 +40,13 @@ const QueryRoot = new GraphQLObjectType({
     getMovies: {
       type: new GraphQLList(Movie),
     },
-    getMoviesByName: {
+    getMovieByName: {
       type: Movie,
       args: {Title: {type: GraphQLString}},
     },
     searchMoviesByName: {
       type: new GraphQLList(Movie),
       args: {Title: {type: GraphQLString}},
-    },
-    getMoviesByYear: {
-      type: new GraphQLList(Movie),
-      args: {Year: {type: GraphQLString}},
     },
   },
 });
