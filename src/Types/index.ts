@@ -13,11 +13,16 @@ export type MovieType = {
   Country: string;
   Awards: string;
   Poster: string;
-  Metascore: number;
-  imdbRating: number;
+  Metascore: string;
+  imdbRating: string;
   imdbVotes: string;
   imdbID: string;
   Type: string;
   Response: string;
   Images: string[];
 };
+
+export interface updateType extends MovieType {
+  mainTitle: string;
+  body: MovieType;
+}
